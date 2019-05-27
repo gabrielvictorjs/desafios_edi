@@ -15,7 +15,7 @@ int main(int argc, char const *argv[]) {
   while(1) {
     printf("\nA Praga ZUMBI!!\n");
     scanf("%d", &limiar);
-    if(limiar < 0) exit(1);
+    if(limiar < 0) break;
     scanf("%d %d", &dim_x, &dim_y);
     scanf("%d %d", &coor_x, &coor_y);
 
@@ -34,6 +34,8 @@ int main(int argc, char const *argv[]) {
       printf("\n");
     }
   }
+
+  printf("\nFIM DO PROGRAMA!\n");
 
   return 0;
 }
