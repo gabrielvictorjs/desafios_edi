@@ -3,7 +3,7 @@
 #include <string.h>
 #define LEN 50
 
-int stack[LEN], top = -1, down = 0;
+int stack[LEN], top = -1, under = 0;
 
 void push(char letter) {
   top++;
@@ -16,14 +16,16 @@ void pop() {
 
 void is_palindrome(char str[]) {
   int i;
+  for(i = 0; str[i] != '\0'; i++) push(str[i]);
+
   for(i = 0; i < strlen(str); i++) {
-    if(stack[top] == stack[down]) { pop(); down++; }
+    if(stack[top] == stack[under]) { pop(); under++; }
     else { printf("[%s] nao eh palindromo\n", str); break; }
   }
 
-  if(strlen(str) == down)
+  if(strlen(str) == under)
     printf("[%s] eh palindromo\n",  str);
-  top = -1; down = 0;
+  top = -1; under = 0;
 }
 
 int main(int argc, char const *argv[]) {
@@ -36,8 +38,6 @@ int main(int argc, char const *argv[]) {
     printf("Digite uma string:\n");
     scanf("%s", string);
     if(strcmp(string, "fim") == 0) break;
-
-    for(i = 0; string[i] != '\0'; i++) push(string[i]);
 
     is_palindrome(string);
   }
